@@ -34,8 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // --- Active Link Scroll Spy ---
+    // --- Active Link Scroll Spy & Header Background Scrolled ---
     const sections = document.querySelectorAll('section');
+    const header = document.querySelector('.header');
     window.addEventListener('scroll', () => {
         let current = '';
         sections.forEach(section => {
@@ -52,6 +53,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 link.classList.add('active');
             }
         });
+
+        // Toggle header glass background when scrolling down
+        if (header) {
+            if (pageYOffset > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
     });
 
 

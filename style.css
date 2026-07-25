@@ -151,11 +151,17 @@ h1, h2, h3, h4 {
     left: 0;
     width: 100%;
     z-index: 1000;
-    background-color: var(--glass);
+    background-color: transparent;
+    border-bottom: 1px solid transparent;
+    transition: var(--transition);
+}
+
+.header.scrolled {
+    background-color: rgba(10, 30, 23, 0.96); /* Deep forest green backing on scroll */
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-    transition: var(--transition);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
 }
 
 .nav-container {
@@ -172,8 +178,17 @@ h1, h2, h3, h4 {
     font-size: 1.7rem;
     font-weight: 700;
     text-decoration: none;
-    color: var(--primary-dark);
+    color: var(--white);
     letter-spacing: 1.5px;
+    transition: var(--transition);
+}
+
+.logo:hover {
+    color: var(--gold-light);
+}
+
+.header.scrolled .logo {
+    color: var(--gold-light);
 }
 
 .nav-menu {
@@ -186,7 +201,7 @@ h1, h2, h3, h4 {
     font-size: 0.82rem;
     font-weight: 600;
     text-decoration: none;
-    color: var(--text-dark);
+    color: var(--white);
     text-transform: uppercase;
     letter-spacing: 1.5px;
     position: relative;
@@ -218,8 +233,13 @@ h1, h2, h3, h4 {
     background: none;
     border: none;
     font-size: 1.5rem;
-    color: var(--primary-dark);
+    color: var(--white);
     cursor: pointer;
+    transition: var(--transition);
+}
+
+.header.scrolled .nav-toggle {
+    color: var(--gold-light);
 }
 
 /* ==========================================
@@ -916,11 +936,11 @@ h1, h2, h3, h4 {
         top: 100%;
         left: 0;
         width: 100%;
-        background-color: var(--white);
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        background-color: var(--primary-dark);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
         padding: 1.5rem;
         gap: 1rem;
-        border-bottom: 2px solid var(--gold-light);
+        border-bottom: 2px solid var(--gold);
     }
     
     .nav-menu.active {
