@@ -132,17 +132,23 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.classList.add('active');
 
             const filterValue = btn.getAttribute('data-filter');
+            const hasPhotos = document.querySelectorAll('.gallery-item:not(.gallery-placeholder)').length > 0;
 
             galleryItems.forEach(item => {
                 const category = item.getAttribute('data-category');
                 const isPlaceholder = item.classList.contains('gallery-placeholder');
                 
                 if (filterValue === 'all') {
-                    // Under 'All', show only actual photos (hide Coming Soon placeholders)
-                    if (!isPlaceholder) {
-                        item.classList.add('show');
+                    if (hasPhotos) {
+                        // Under 'All', show only actual photos (hide Coming Soon placeholders)
+                        if (!isPlaceholder) {
+                            item.classList.add('show');
+                        } else {
+                            item.classList.remove('show');
+                        }
                     } else {
-                        item.classList.remove('show');
+                        // If no photos exist, show all placeholders under 'All'
+                        item.classList.add('show');
                     }
                 } else {
                     // Under specific category, show matching items (can be photo or placeholder card)
